@@ -73,4 +73,4 @@ Alpha version — the project is under active development; the data structure an
 
 ## 📄 License
 
-Add your preferred license here (e.g. MIT).
+This project is licensed under the [Apache License 2.0](LICENSE).
