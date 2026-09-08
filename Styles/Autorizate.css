@@ -1,0 +1,330 @@
+/* ── RESET & BASE ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #1a1a2e;
+  --surface:   #5252b8;
+  --card:      #252560;
+  --input-bg:  #d8d8e45b;
+  --accent:    #5a5aff;
+  --tab-dim:   rgba(255,255,255,0.45);
+  --tab-act:   #ffffff;
+  --btn-bg:    #0d0d1ab6;
+  --btn-text:  #ffffff;
+  --label:     rgba(255,255,255,0.85);
+  --radius-card: 20px;
+  --radius-input: 50px;
+  --radius-btn:   50px;
+  --font-head: 'Rajdhani', sans-serif;
+  --font-body: 'Nunito', sans-serif;
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  font-family: var(--font-body);
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── BACKGROUND ── */
+.bg-dots {
+  position: fixed; inset: 0; z-index: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+.bg-glow {
+  position: fixed; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 40%, rgba(90,90,255,0.25) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 80% 70%, rgba(120,80,200,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── WRAPPER ── */
+.auth-wrapper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 340px;
+}
+
+/* ── TABS ── */
+.tabs {
+  display: flex;
+  gap: 28px;
+  margin-bottom: -2px;
+  padding: 0 8px;
+  position: relative;
+  z-index: 2;
+}
+
+.tab {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--tab-dim);
+  padding: 10px 4px;
+  position: relative;
+  transition: color var(--transition);
+  outline: none;
+}
+
+.tab::after {
+  content: '';
+  position: absolute;
+  bottom: 4px; left: 0; right: 0;
+  height: 2.5px;
+  background: var(--accent);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transition: transform var(--transition);
+}
+
+.tab.active {
+  color: var(--tab-act);
+}
+
+.tab.active::after {
+  transform: scaleX(1);
+}
+
+.tab:hover:not(.active) {
+  color: rgba(255,255,255,0.7);
+}
+
+/* ── CARD ── */
+.card {
+  width: 100%;
+  border-radius: var(--radius-card);
+  padding: 28px 24px 24px;
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.959),
+    inset 0 1px 0 rgba(255, 255, 255, 0.76);
+  position: relative;
+  overflow: hidden;
+  min-height: 280px;
+}
+
+/* ── FORM PANELS ── */
+.form-panel {
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  animation: fadeSlideIn 0.38s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+.form-panel.active {
+  display: flex;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── FIELD GROUP ── */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.field-label {
+  font-family: var(--font-head);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  color: var(--label);
+  padding-left: 4px;
+}
+
+.field-input {
+  background: var(--input-bg);
+  border: none;
+  border-radius: var(--radius-input);
+  height: 38px;
+  padding: 0 18px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: #1a1a3a;
+  outline: none;
+  transition: background var(--transition), box-shadow var(--transition);
+  width: 100%;
+}
+
+.field-input::placeholder {
+  color: rgba(26, 26, 58, 0);
+}
+
+.field-input:focus {
+  background: #adadd8;
+  box-shadow: 0 0 0 3px rgba(90,90,255,0.35);
+}
+
+/* ── PASSWORD WRAPPER ── */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper .field-input {
+  padding-right: 44px;
+}
+
+.eye-btn {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.7);
+  transition: color 0.2s;
+  outline: none;
+}
+
+.eye-btn:hover {
+  color: rgba(255,255,255,1);
+}
+
+.eye-btn svg {
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+}
+
+/* ── SPACER (for sign-in extra space) ── */
+.spacer { height: 20px; }
+
+/* ── SUBMIT BUTTON ── */
+.submit-btn {
+  width: 100%;
+  height: 50px;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  border-radius: var(--radius-btn);
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  margin-top: 6px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.submit-btn:hover::before {
+  transform: translateX(100%);
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.5);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+
+/* ── TOAST ── */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(20,20,50,0.95);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  padding: 10px 22px;
+  border-radius: 50px;
+  border: 1px solid rgba(90,90,255,0.4);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 100;
+  white-space: nowrap;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast.success { border-color: rgba(80,220,120,0.5); }
+.toast.error   { border-color: rgba(255,80,80,0.5); }
+
+.verify-timer {
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  font-style: italic;
+}
+
+.verify-text {
+  font-family: var(--font-head);
+  font-size: 1rem;
+  color: #ffffff;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.resend-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-family: var(--font-head);
+  font-size: 1rem;
+  font-style: italic;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.resend-btn:hover {
+  text-decoration: underline;
+}
+
+.errorfield{
+  border: 2px solid red;
+  border-color: red;
+}
+
+.su-repeat{
+  border: 2px solid red;
+  border-color: red;
+}

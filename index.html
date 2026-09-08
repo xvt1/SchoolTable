@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>School Table</title>
+        <link rel="stylesheet" href="Styles/tables.css">
+
+        <link rel="icon" href="assets/icon.jpg" type="image/jpg">
+    
+        <link rel="apple-touch-icon" href="icon.jpg">
+
+        <link rel="manifest" href="manifest.json">
+        <meta name="theme-color" content="#0d0f17">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-title" content="Розклад">
+    </head>
+
+    <body class="theme-night">
+        <div class="profile-wrapper">
+            <button id="profile" aria-label="Профіль">
+                <!-- тут аватарка або іконка -->
+               Профіль
+            </button>
+
+            <div class="profile-menu" id="profileMenu">
+                <button class="menu-item danger" onclick="handleLogout()">
+                    <span class="menu-icon">⎋</span>
+                    Вийти
+                </button>
+            </div>
+        </div>
+
+
+        <div id = "titul">
+            <button onclick="changeWeek(-1)" class = "btn-next">◀</button>
+            <button class = "btn-listmonth">▲</button>
+            <h1 id="titul1">Розклад Занять на Серпень</h1>
+            <button onclick="changeWeek(1)" class = "btn-next">▶</button>
+        </div>
+
+        <div class="schedule"></div>
+        <textarea id="inf" placeholder="Номер кабінету"></textarea>
+
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="Js/tablesJs/config.js"></script>
+        <script src="Js/tablesJs/table.js"></script>
+
+        <div id="addsystem">
+        <textarea name="field" id="addfield" placeholder="Додайте таблицю" rows="1"></textarea>
+        <button onclick="promt('paste.txt')" class="info-btn" title="Інформація">i</button>
+        <button onclick="add()" class="add-btn">Add</button>
+        </div>
+
+        <h5>Alpha-version</h5>
+
+
+        <script src="Js/Effects/Effect.js"></script>
+        <script src="Js/tablesJs/profile.js"></script>
+        <script src="Js/tablesJs/checkAuthorizate.js"></script>
+        <script src="Js/tablesJs/addtable.js"></script>
+        <script src="Js/tablesJs/timer.js"></script>
+
+
+    </body>
+</html>

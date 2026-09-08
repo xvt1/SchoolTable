@@ -1,0 +1,31 @@
+# Цей файл кладеться в КОРІНЬ вашого проєкту (туди ж, де index.html)
+# і деплоїться разом із сайтом на Netlify. Розширення не потрібне —
+# файл має називатись рівно "_headers".
+
+# HTML-сторінки — ніколи не кешувати, завжди брати свіжу версію
+/*.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+# Корінь сайту (index.html за замовчуванням) — теж без кешу
+/
+  Cache-Control: no-cache, no-store, must-revalidate
+
+# JS та CSS файли — короткий кеш з обов'язковою перевіркою змін
+/*.js
+  Cache-Control: no-cache, must-revalidate
+
+/*.css
+  Cache-Control: no-cache, must-revalidate
+
+# Картинки, шрифти тощо — можна кешувати довго, вони рідко змінюються
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable

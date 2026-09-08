@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School Table</title>
+  <link rel="apple-touch-icon" href="icon.jpg">
+  <link rel="stylesheet" href="Styles/Autorizate.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="bg-dots"></div>
+  <div class="bg-glow"></div>
+
+  <div class="auth-wrapper">
+
+    <div class="tabs">
+      <button class="tab active" id="tab-signin" onclick="switchTab('signin')">SIGN IN</button>
+      <button class="tab" id="tab-signup" onclick="switchTab('signup')">SIGN UP</button>
+    </div>
+
+    <div class="card">
+
+      <!-- SIGN IN -->
+      <div class="form-panel active" id="panel-signin">
+        <div class="field-group">
+          <label class="field-label">LOGIN</label>
+          <input type="text" class="field-input" id="si-username" autocomplete="username" />
+        </div>
+        <div class="field-group">
+          <label class="field-label">PASSWORD</label>
+          <div class="input-wrapper">
+            <input type="password" class="field-input" id="si-password" autocomplete="current-password" />
+            <button class="eye-btn" type="button" onclick="togglePassword('si-password', this)" tabindex="-1" aria-label="Показати пароль">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="spacer"></div>
+        <button class="submit-btn" onclick="handleSignIn()">SIGN IN</button>
+      </div>
+
+      <!-- SIGN UP -->
+      <div class="form-panel" id="panel-signup">
+        <div class="field-group">
+          <label class="field-label">NICKNAME</label>
+          <input type="text" class="field-input" id="su-nickname" autocomplete="nickname" placeholder="Як вас бачитимуть" />
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">LOGIN</label>
+          <input type="text" class="field-input" id="su-username" autocomplete="username" placeholder="Для входу" />
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">PASSWORD</label>
+          <div class="input-wrapper">
+            <input type="password" class="field-input" id="su-password" autocomplete="new-password" />
+            <button class="eye-btn" type="button" onclick="togglePassword('su-password', this)" tabindex="-1" aria-label="Показати пароль">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">REPEAT PASSWORD</label>
+          <div class="input-wrapper">
+            <input type="password" class="field-input" id="su-repeat" autocomplete="new-password" />
+            <button class="eye-btn" type="button" onclick="togglePassword('su-repeat', this)" tabindex="-1" aria-label="Показати пароль">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <button class="submit-btn" onclick="handleSignUp()">SIGN UP</button>
+      </div>
+
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+  </div>
+
+  <script src="Js/tablesJs/config.js"></script>
+  <script src="Js/Autorizate/Autorizate.js"></script>
+  <script src="Js/Effects/Effect.js"></script>
+</body>
+</html>
