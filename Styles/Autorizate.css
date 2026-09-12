@@ -328,3 +328,18 @@ body {
   border: 2px solid red;
   border-color: red;
 }
+#backBtn{
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  font-size:50px
+}
+#backBtn:hover{
+  text-decoration: underline;
+  text-decoration-color: rgb(252, 252, 252);
+}

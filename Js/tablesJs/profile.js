@@ -1,9 +1,18 @@
 const profileBtn = document.getElementById('profile');
 const profileMenu = document.getElementById('profileMenu');
+const loginbtn = document.getElementById('loginBtn');
+const registerbtn = document.getElementById('registerBtn');
 
 if (profileBtn && profileMenu) {
     profileBtn.addEventListener('click', (e) => {
         e.stopPropagation();
+
+        // Гість без токена: одразу на логін, меню профілю йому не потрібне
+        if (!localStorage.getItem('token')) {
+            window.location.href = 'autorizate.html';
+            return;
+        }
+
         profileMenu.classList.toggle('open');
     });
 
@@ -17,7 +26,10 @@ if (profileBtn && profileMenu) {
 window.addEventListener('load', () => {
     const token = localStorage.getItem('token');
     if (!token) {
-        window.location.href = 'autorizate.html';
+        // Гість: розклад лишається видимим, просто кнопка каже "Увійти"
+        if (profileBtn) {
+            profileBtn.style.display = 'none';
+        }
         return;
     }
     const nick = localStorage.getItem('nickname');
@@ -36,4 +48,12 @@ function handleLogout() {
     }
 
     window.location.href = 'autorizate.html';
+}
+
+function handleLoginRedirect() {
+    window.location.href = 'autorizate.html';
+}
+
+function handleRegisterRedirect() {
+    window.location.href = 'autorizate.html#signup';
 }

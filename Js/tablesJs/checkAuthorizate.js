@@ -98,7 +98,8 @@ function logout() {
 async function checkAuth() {
   const token = localStorage.getItem('token');
   if (!token) {
-    window.location.href = 'autorizate.html';
+    // Гість: розклад публічний, не проганяємо на логін.
+    // /auth/me просто нема сенсу опитувати без токена.
     return;
   }
 

@@ -1433,3 +1433,26 @@ tr[class*="-lesson-"].lesson-collapsed td {
         height: 36px;
     }
 }
+
+#authorizate {
+    position: absolute;
+    right: 30px;
+    top: 20px; /* додано для правильного позиціонування absolute */
+}
+
+#loginBtn, #registerBtn {
+    background-color: transparent; 
+    
+    outline: none; 
+    color: rgb(229, 226, 255);
+    border: rgba(255, 0, 0, 0);
+    cursor: pointer; 
+    font-size: 16px; 
+    text-decoration: none; 
+}
+
+#loginBtn:hover, #registerBtn:hover {
+    color: red;
+    border-color: red; /* при наведенні рамка ТЕЖ стане червоною */
+    text-decoration: underline; 
+}

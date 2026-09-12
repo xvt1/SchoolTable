@@ -188,3 +188,22 @@ function togglePassword(inputId, btn) {
     svg.innerHTML = isHidden ? EYE_OFF : EYE_OPEN;
     btn.setAttribute('aria-label', isHidden ? 'Приховати пароль' : 'Показати пароль');
 }
+window.addEventListener('load', () => {
+    const token = localStorage.getItem('token');
+    if (token) {
+        window.location.href = 'index.html';
+        return; // Зупиняємо виконання, якщо користувач уже авторизований
+    }
+
+    // Автоматичне перемикання на потрібну вкладку при переході з головної сторінки
+    const hash = window.location.hash; 
+    if (hash === '#signup') {
+        switchTab('signup'); // Перемикає на SIGN UP (Реєстрація)
+    } else {
+        switchTab('signin'); // Якщо хешу немає або він #signin — відкриває SIGN IN (Вхід)
+    }
+});
+
+function handleBack() {
+    window.location.href = 'index.html';
+}
